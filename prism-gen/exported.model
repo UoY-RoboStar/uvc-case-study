@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="ASCII"?>
+<robochart:RCPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:robochart="http://www.robocalc.circus/RoboChart" name="exported_model">
+  <interfaces name="stateInf">
+    <variableList>
+      <vars name="shuman">
+        <type xsi:type="robochart:TypeRef" ref="//@types.0"/>
+      </vars>
+    </variableList>
+    <variableList>
+      <vars name="sods">
+        <type xsi:type="robochart:TypeRef" ref="//@types.1"/>
+      </vars>
+    </variableList>
+    <variableList>
+      <vars name="srobot">
+        <type xsi:type="robochart:TypeRef" ref="//@types.2"/>
+      </vars>
+    </variableList>
+  </interfaces>
+  <interfaces name="eventInf">
+    <events name="tick"/>
+  </interfaces>
+  <types xsi:type="robochart:Enumeration" name="SHuman">
+    <literals name="outOfRange"/>
+    <literals name="inGreen"/>
+    <literals name="inYellow"/>
+    <literals name="inRed"/>
+  </types>
+  <types xsi:type="robochart:Enumeration" name="SODS">
+    <literals name="noHumanDetected"/>
+    <literals name="humanDetectedInGreen"/>
+    <literals name="humanDetectedInYellow"/>
+  </types>
+  <types xsi:type="robochart:Enumeration" name="SRobot">
+    <literals name="alongRow"/>
+    <literals name="transitionRow"/>
+    <literals name="paused"/>
+  </types>
+  <machines name="EventRelaySTM">
+    <variableList>
+      <vars name="ticks">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.1"/>
+        </type>
+        <initial xsi:type="robochart:IntegerExp"/>
+      </vars>
+    </variableList>
+    <variableList modifier="CONST">
+      <vars name="N_ticks">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.1"/>
+        </type>
+      </vars>
+    </variableList>
+    <events name="tick"/>
+    <events name="humanTick"/>
+    <events name="robotTick"/>
+    <events name="odsTick"/>
+    <nodes xsi:type="robochart:Initial" name="i0"/>
+    <nodes xsi:type="robochart:State" name="RelayEvent"/>
+    <transitions name="t0" source="//@machines.0/@nodes.0" target="//@machines.0/@nodes.1"/>
+    <transitions name="t1" source="//@machines.0/@nodes.1" target="//@machines.0/@nodes.1">
+      <trigger event="//@machines.0/@events.0"/>
+      <action xsi:type="robochart:SeqStatement">
+        <statements xsi:type="robochart:CommunicationStmt">
+          <communication event="//@machines.0/@events.1"/>
+        </statements>
+        <statements xsi:type="robochart:CommunicationStmt">
+          <communication event="//@machines.0/@events.3"/>
+        </statements>
+        <statements xsi:type="robochart:CommunicationStmt">
+          <communication event="//@machines.0/@events.2"/>
+        </statements>
+        <statements xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@machines.0/@variableList.0/@vars.0"/>
+          <right xsi:type="robochart:ParExp">
+            <exp xsi:type="robochart:IfExpression">
+              <condition xsi:type="robochart:LessThan">
+                <left xsi:type="robochart:RefExp" ref="//@machines.0/@variableList.0/@vars.0"/>
+                <right xsi:type="robochart:RefExp" ref="//@machines.0/@variableList.1/@vars.0"/>
+              </condition>
+              <ifexp xsi:type="robochart:Plus">
+                <left xsi:type="robochart:RefExp" ref="//@machines.0/@variableList.0/@vars.0"/>
+                <right xsi:type="robochart:IntegerExp" value="1"/>
+              </ifexp>
+              <elseexp xsi:type="robochart:RefExp" ref="//@machines.0/@variableList.0/@vars.0"/>
+            </exp>
+          </right>
+        </statements>
+      </action>
+    </transitions>
+  </machines>
+  <machines rInterfaces="//@interfaces.0" name="ODSSTM">
+    <variableList modifier="CONST">
+      <vars name="p_ods_green">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.4"/>
+        </type>
+      </vars>
+    </variableList>
+    <variableList modifier="CONST">
+      <vars name="p_ods_yellow">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.4"/>
+        </type>
+      </vars>
+    </variableList>
+    <events name="tick"/>
+    <nodes xsi:type="robochart:Initial" name="i0"/>
+    <nodes xsi:type="robochart:State" name="NoHumanDetected">
+      <actions xsi:type="robochart:EntryAction">
+        <action xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@interfaces.0/@variableList.1/@vars.0"/>
+          <right xsi:type="robochart:EnumExp" type="//@types.1" literal="//@types.1/@literals.0"/>
+        </action>
+      </actions>
+    </nodes>
+    <nodes xsi:type="robochart:State" name="HumanDetectedInYellow">
+      <actions xsi:type="robochart:EntryAction">
+        <action xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@interfaces.0/@variableList.1/@vars.0"/>
+          <right xsi:type="robochart:EnumExp" type="//@types.1" literal="//@types.1/@literals.2"/>
+        </action>
+      </actions>
+    </nodes>
+    <nodes xsi:type="robochart:State" name="HumanDetectedInGreen">
+      <actions xsi:type="robochart:EntryAction">
+        <action xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@interfaces.0/@variableList.1/@vars.0"/>
+          <right xsi:type="robochart:EnumExp" type="//@types.1" literal="//@types.1/@literals.1"/>
+        </action>
+      </actions>
+    </nodes>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p0"/>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p1"/>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p2"/>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p3"/>
+    <transitions name="t0" source="//@machines.1/@nodes.0" target="//@machines.1/@nodes.1"/>
+    <transitions name="t1" source="//@machines.1/@nodes.1" target="//@machines.1/@nodes.4">
+      <trigger event="//@machines.1/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.0/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.1"/>
+      </condition>
+    </transitions>
+    <transitions name="t2" source="//@machines.1/@nodes.4" target="//@machines.1/@nodes.3">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.1/@variableList.0/@vars.0"/>
+    </transitions>
+    <transitions name="t3" source="//@machines.1/@nodes.4" target="//@machines.1/@nodes.1">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.1/@variableList.0/@vars.0"/>
+      </probability>
+    </transitions>
+    <transitions name="t4" source="//@machines.1/@nodes.1" target="//@machines.1/@nodes.5">
+      <trigger event="//@machines.1/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.0/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.2"/>
+      </condition>
+    </transitions>
+    <transitions name="t5" source="//@machines.1/@nodes.5" target="//@machines.1/@nodes.2">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.1/@variableList.1/@vars.0"/>
+    </transitions>
+    <transitions name="t6" source="//@machines.1/@nodes.5" target="//@machines.1/@nodes.1">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.1/@variableList.1/@vars.0"/>
+      </probability>
+    </transitions>
+    <transitions name="t7" source="//@machines.1/@nodes.3" target="//@machines.1/@nodes.6">
+      <trigger event="//@machines.1/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.0/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.2"/>
+      </condition>
+    </transitions>
+    <transitions name="t8" source="//@machines.1/@nodes.6" target="//@machines.1/@nodes.2">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.1/@variableList.1/@vars.0"/>
+    </transitions>
+    <transitions name="t9" source="//@machines.1/@nodes.6" target="//@machines.1/@nodes.3">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.1/@variableList.1/@vars.0"/>
+      </probability>
+    </transitions>
+    <transitions name="t10" source="//@machines.1/@nodes.3" target="//@machines.1/@nodes.1">
+      <trigger event="//@machines.1/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.0/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.0"/>
+      </condition>
+    </transitions>
+    <transitions name="t11" source="//@machines.1/@nodes.2" target="//@machines.1/@nodes.1">
+      <trigger event="//@machines.1/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.0/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.0"/>
+      </condition>
+    </transitions>
+    <transitions name="t12" source="//@machines.1/@nodes.2" target="//@machines.1/@nodes.7">
+      <trigger event="//@machines.1/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.0/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.1"/>
+      </condition>
+    </transitions>
+    <transitions name="t13" source="//@machines.1/@nodes.7" target="//@machines.1/@nodes.3">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.1/@variableList.0/@vars.0"/>
+    </transitions>
+    <transitions name="t14" source="//@machines.1/@nodes.7" target="//@machines.1/@nodes.2">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.1/@variableList.0/@vars.0"/>
+      </probability>
+    </transitions>
+  </machines>
+  <machines rInterfaces="//@interfaces.0" name="HumanSTM">
+    <variableList modifier="CONST">
+      <vars name="p_approach_robot">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.4"/>
+        </type>
+      </vars>
+    </variableList>
+    <variableList modifier="CONST">
+      <vars name="p_aware_of_risk">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.4"/>
+        </type>
+      </vars>
+    </variableList>
+    <variableList modifier="CONST">
+      <vars name="p_approach_red">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.4"/>
+        </type>
+      </vars>
+    </variableList>
+    <variableList modifier="CONST">
+      <vars name="p_approach_yellow">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.4"/>
+        </type>
+      </vars>
+    </variableList>
+    <events name="tick"/>
+    <nodes xsi:type="robochart:Initial" name="i0"/>
+    <nodes xsi:type="robochart:State" name="OutOfRange">
+      <actions xsi:type="robochart:EntryAction">
+        <action xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@interfaces.0/@variableList.0/@vars.0"/>
+          <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.0"/>
+        </action>
+      </actions>
+    </nodes>
+    <nodes xsi:type="robochart:State" name="InGreenZone">
+      <actions xsi:type="robochart:EntryAction">
+        <action xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@interfaces.0/@variableList.0/@vars.0"/>
+          <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.1"/>
+        </action>
+      </actions>
+    </nodes>
+    <nodes xsi:type="robochart:State" name="InYellowZone">
+      <actions xsi:type="robochart:EntryAction">
+        <action xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@interfaces.0/@variableList.0/@vars.0"/>
+          <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.2"/>
+        </action>
+      </actions>
+    </nodes>
+    <nodes xsi:type="robochart:State" name="InRedZone">
+      <actions xsi:type="robochart:EntryAction">
+        <action xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@interfaces.0/@variableList.0/@vars.0"/>
+          <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.3"/>
+        </action>
+      </actions>
+    </nodes>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p0"/>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p1"/>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p2"/>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p3"/>
+    <transitions name="t0" source="//@machines.2/@nodes.0" target="//@machines.2/@nodes.1"/>
+    <transitions name="t1" source="//@machines.2/@nodes.1" target="//@machines.2/@nodes.5">
+      <trigger event="//@machines.2/@events.0"/>
+    </transitions>
+    <transitions name="t2" source="//@machines.2/@nodes.5" target="//@machines.2/@nodes.2">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.2/@variableList.0/@vars.0"/>
+    </transitions>
+    <transitions name="t3" source="//@machines.2/@nodes.5" target="//@machines.2/@nodes.1">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.2/@variableList.0/@vars.0"/>
+      </probability>
+    </transitions>
+    <transitions name="t4" source="//@machines.2/@nodes.2" target="//@machines.2/@nodes.6">
+      <trigger event="//@machines.2/@events.0"/>
+    </transitions>
+    <transitions name="t5" source="//@machines.2/@nodes.6" target="//@machines.2/@nodes.3">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.2/@variableList.3/@vars.0"/>
+    </transitions>
+    <transitions name="t6" source="//@machines.2/@nodes.6" target="//@machines.2/@nodes.1">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.2/@variableList.3/@vars.0"/>
+      </probability>
+    </transitions>
+    <transitions name="t7" source="//@machines.2/@nodes.3" target="//@machines.2/@nodes.7">
+      <trigger event="//@machines.2/@events.0"/>
+    </transitions>
+    <transitions name="t8" source="//@machines.2/@nodes.7" target="//@machines.2/@nodes.4">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.2/@variableList.2/@vars.0"/>
+    </transitions>
+    <transitions name="t9" source="//@machines.2/@nodes.7" target="//@machines.2/@nodes.2">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.2/@variableList.2/@vars.0"/>
+      </probability>
+    </transitions>
+    <transitions name="t10" source="//@machines.2/@nodes.4" target="//@machines.2/@nodes.8">
+      <trigger event="//@machines.2/@events.0"/>
+    </transitions>
+    <transitions name="t11" source="//@machines.2/@nodes.8" target="//@machines.2/@nodes.1">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.2/@variableList.1/@vars.0"/>
+    </transitions>
+    <transitions name="t12" source="//@machines.2/@nodes.8" target="//@machines.2/@nodes.4">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.2/@variableList.1/@vars.0"/>
+      </probability>
+    </transitions>
+  </machines>
+  <machines rInterfaces="//@interfaces.0" name="ODSSTM">
+    <variableList modifier="CONST">
+      <vars name="p_ods_green">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.4"/>
+        </type>
+      </vars>
+    </variableList>
+    <variableList modifier="CONST">
+      <vars name="p_ods_yellow">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.4"/>
+        </type>
+      </vars>
+    </variableList>
+    <events name="tick"/>
+    <nodes xsi:type="robochart:Initial" name="i0"/>
+    <nodes xsi:type="robochart:State" name="NoHumanDetected">
+      <actions xsi:type="robochart:EntryAction">
+        <action xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@interfaces.0/@variableList.1/@vars.0"/>
+          <right xsi:type="robochart:EnumExp" type="//@types.1" literal="//@types.1/@literals.0"/>
+        </action>
+      </actions>
+    </nodes>
+    <nodes xsi:type="robochart:State" name="HumanDetectedInYellow">
+      <actions xsi:type="robochart:EntryAction">
+        <action xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@interfaces.0/@variableList.1/@vars.0"/>
+          <right xsi:type="robochart:EnumExp" type="//@types.1" literal="//@types.1/@literals.2"/>
+        </action>
+      </actions>
+    </nodes>
+    <nodes xsi:type="robochart:State" name="HumanDetectedInGreen">
+      <actions xsi:type="robochart:EntryAction">
+        <action xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@interfaces.0/@variableList.1/@vars.0"/>
+          <right xsi:type="robochart:EnumExp" type="//@types.1" literal="//@types.1/@literals.1"/>
+        </action>
+      </actions>
+    </nodes>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p0"/>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p1"/>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p2"/>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p3"/>
+    <transitions name="t0" source="//@machines.3/@nodes.0" target="//@machines.3/@nodes.1"/>
+    <transitions name="t1" source="//@machines.3/@nodes.1" target="//@machines.3/@nodes.4">
+      <trigger event="//@machines.3/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.0/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.1"/>
+      </condition>
+    </transitions>
+    <transitions name="t2" source="//@machines.3/@nodes.4" target="//@machines.3/@nodes.3">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.3/@variableList.0/@vars.0"/>
+    </transitions>
+    <transitions name="t3" source="//@machines.3/@nodes.4" target="//@machines.3/@nodes.1">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.3/@variableList.0/@vars.0"/>
+      </probability>
+    </transitions>
+    <transitions name="t4" source="//@machines.3/@nodes.1" target="//@machines.3/@nodes.5">
+      <trigger event="//@machines.3/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.0/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.2"/>
+      </condition>
+    </transitions>
+    <transitions name="t5" source="//@machines.3/@nodes.5" target="//@machines.3/@nodes.2">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.3/@variableList.1/@vars.0"/>
+    </transitions>
+    <transitions name="t6" source="//@machines.3/@nodes.5" target="//@machines.3/@nodes.1">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.3/@variableList.1/@vars.0"/>
+      </probability>
+    </transitions>
+    <transitions name="t7" source="//@machines.3/@nodes.3" target="//@machines.3/@nodes.6">
+      <trigger event="//@machines.3/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.0/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.2"/>
+      </condition>
+    </transitions>
+    <transitions name="t8" source="//@machines.3/@nodes.6" target="//@machines.3/@nodes.2">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.3/@variableList.1/@vars.0"/>
+    </transitions>
+    <transitions name="t9" source="//@machines.3/@nodes.6" target="//@machines.3/@nodes.3">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.3/@variableList.1/@vars.0"/>
+      </probability>
+    </transitions>
+    <transitions name="t10" source="//@machines.3/@nodes.3" target="//@machines.3/@nodes.1">
+      <trigger event="//@machines.3/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.0/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.0"/>
+      </condition>
+    </transitions>
+    <transitions name="t11" source="//@machines.3/@nodes.2" target="//@machines.3/@nodes.1">
+      <trigger event="//@machines.3/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.0/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.0"/>
+      </condition>
+    </transitions>
+    <transitions name="t12" source="//@machines.3/@nodes.2" target="//@machines.3/@nodes.7">
+      <trigger event="//@machines.3/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.0/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.0" literal="//@types.0/@literals.1"/>
+      </condition>
+    </transitions>
+    <transitions name="t13" source="//@machines.3/@nodes.7" target="//@machines.3/@nodes.3">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.3/@variableList.0/@vars.0"/>
+    </transitions>
+    <transitions name="t14" source="//@machines.3/@nodes.7" target="//@machines.3/@nodes.2">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.3/@variableList.0/@vars.0"/>
+      </probability>
+    </transitions>
+  </machines>
+  <machines rInterfaces="//@interfaces.0" name="RobotSTM">
+    <variableList modifier="CONST">
+      <vars name="p_transition_ratio">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.4"/>
+        </type>
+      </vars>
+    </variableList>
+    <events name="tick"/>
+    <nodes xsi:type="robochart:Initial" name="i0"/>
+    <nodes xsi:type="robochart:State" name="MoveAlongRow">
+      <actions xsi:type="robochart:EntryAction">
+        <action xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@interfaces.0/@variableList.2/@vars.0"/>
+          <right xsi:type="robochart:EnumExp" type="//@types.2" literal="//@types.2/@literals.0"/>
+        </action>
+      </actions>
+    </nodes>
+    <nodes xsi:type="robochart:State" name="TransitionBetweenRows">
+      <actions xsi:type="robochart:EntryAction">
+        <action xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@interfaces.0/@variableList.2/@vars.0"/>
+          <right xsi:type="robochart:EnumExp" type="//@types.2" literal="//@types.2/@literals.1"/>
+        </action>
+      </actions>
+    </nodes>
+    <nodes xsi:type="robochart:State" name="Paused">
+      <actions xsi:type="robochart:EntryAction">
+        <action xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef" name="//@interfaces.0/@variableList.2/@vars.0"/>
+          <right xsi:type="robochart:EnumExp" type="//@types.2" literal="//@types.2/@literals.2"/>
+        </action>
+      </actions>
+    </nodes>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p0"/>
+    <nodes xsi:type="robochart:ProbabilisticJunction" name="p1"/>
+    <transitions name="t0" source="//@machines.4/@nodes.0" target="//@machines.4/@nodes.1"/>
+    <transitions name="t1" source="//@machines.4/@nodes.1" target="//@machines.4/@nodes.4">
+      <trigger event="//@machines.4/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.1/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.1" literal="//@types.1/@literals.0"/>
+      </condition>
+    </transitions>
+    <transitions name="t2" source="//@machines.4/@nodes.2" target="//@machines.4/@nodes.5">
+      <trigger event="//@machines.4/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.1/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.1" literal="//@types.1/@literals.0"/>
+      </condition>
+    </transitions>
+    <transitions name="t3" source="//@machines.4/@nodes.2" target="//@machines.4/@nodes.3">
+      <trigger event="//@machines.4/@events.0"/>
+      <condition xsi:type="robochart:Different">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.1/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.1" literal="//@types.1/@literals.0"/>
+      </condition>
+    </transitions>
+    <transitions name="t4" source="//@machines.4/@nodes.3" target="//@machines.4/@nodes.1">
+      <trigger event="//@machines.4/@events.0"/>
+      <condition xsi:type="robochart:Equals">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.1/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.1" literal="//@types.1/@literals.0"/>
+      </condition>
+    </transitions>
+    <transitions name="t5" source="//@machines.4/@nodes.1" target="//@machines.4/@nodes.3">
+      <trigger event="//@machines.4/@events.0"/>
+      <condition xsi:type="robochart:Different">
+        <left xsi:type="robochart:RefExp" ref="//@interfaces.0/@variableList.1/@vars.0"/>
+        <right xsi:type="robochart:EnumExp" type="//@types.1" literal="//@types.1/@literals.0"/>
+      </condition>
+    </transitions>
+    <transitions name="t8" source="//@machines.4/@nodes.4" target="//@machines.4/@nodes.2">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.4/@variableList.0/@vars.0"/>
+    </transitions>
+    <transitions name="t9" source="//@machines.4/@nodes.4" target="//@machines.4/@nodes.1">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.4/@variableList.0/@vars.0"/>
+      </probability>
+    </transitions>
+    <transitions name="t10" source="//@machines.4/@nodes.5" target="//@machines.4/@nodes.1">
+      <probability xsi:type="robochart:Minus">
+        <left xsi:type="robochart:IntegerExp" value="1"/>
+        <right xsi:type="robochart:RefExp" ref="//@machines.4/@variableList.0/@vars.0"/>
+      </probability>
+    </transitions>
+    <transitions name="t7" source="//@machines.4/@nodes.5" target="//@machines.4/@nodes.2">
+      <probability xsi:type="robochart:RefExp" ref="//@machines.4/@variableList.0/@vars.0"/>
+    </transitions>
+  </machines>
+  <modules name="modUVC">
+    <connections from="//@modules.0/@nodes.0" to="//@modules.0/@nodes.1" efrom="//@interfaces.1/@events.0" eto="//@interfaces.1/@events.0" async="true"/>
+    <nodes xsi:type="robochart:RoboticPlatformDef" pInterfaces="//@interfaces.0" interfaces="//@interfaces.1" name="rpUVC"/>
+    <nodes xsi:type="robochart:ControllerDef" rInterfaces="//@interfaces.0" interfaces="//@interfaces.1" name="ctrlUVC">
+      <machines xsi:type="robochart:StateMachineRef" name="stm_ref0" ref="//@machines.1"/>
+      <machines xsi:type="robochart:StateMachineRef" name="stm_ref1" ref="//@machines.4"/>
+      <machines xsi:type="robochart:StateMachineRef" name="stm_ref2" ref="//@machines.2"/>
+      <machines xsi:type="robochart:StateMachineRef" name="stm_ref3" ref="//@machines.0"/>
+      <connections from="//@modules.0/@nodes.1" to="//@modules.0/@nodes.1/@machines.3" efrom="//@interfaces.1/@events.0" eto="//@machines.0/@events.0"/>
+      <connections from="//@modules.0/@nodes.1/@machines.3" to="//@modules.0/@nodes.1/@machines.0" efrom="//@machines.0/@events.3" eto="//@machines.1/@events.0" async="true"/>
+      <connections from="//@modules.0/@nodes.1/@machines.3" to="//@modules.0/@nodes.1/@machines.1" efrom="//@machines.0/@events.2" eto="//@machines.4/@events.0" async="true"/>
+      <connections from="//@modules.0/@nodes.1/@machines.3" to="//@modules.0/@nodes.1/@machines.2" efrom="//@machines.0/@events.1" eto="//@machines.2/@events.0" async="true"/>
+    </nodes>
+  </modules>
+</robochart:RCPackage>

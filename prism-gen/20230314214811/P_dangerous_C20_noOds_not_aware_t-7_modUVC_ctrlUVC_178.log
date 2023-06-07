@@ -1,0 +1,91 @@
+PRISM
+=====
+
+Version: 4.6
+Date: Tue Mar 14 21:48:15 GMT 2023
+Hostname: compute3.cs.york.ac.uk
+Memory limits: cudd=1g, java(heap)=1g
+Command line: prism uvc__P_dangerous_C20_noOds_not_aware_assertions.prism uvc_assertions.props -const t=7 -const modUVC_ctrlUVC_stm_ref3_N_ticks=20 -const modUVC_ctrlUVC_stm_ref2_p_aware_of_risk=0.01 -const modUVC_ctrlUVC_stm_ref2_p_approach_red=0.7 -const modUVC_ctrlUVC_stm_ref2_p_approach_yellow=0.9 -const modUVC_ctrlUVC_stm_ref2_p_approach_robot=0.9 -const modUVC_ctrlUVC_stm_ref1_p_transition_ratio=0.1 -const modUVC_ctrlUVC_stm_ref0_p_ods_green=0 -const modUVC_ctrlUVC_stm_ref0_p_ods_yellow=0 -prop P_dangerous_C20_noOds_not_aware
+
+Parsing model file "uvc__P_dangerous_C20_noOds_not_aware_assertions.prism"...
+
+Type:        DTMC
+Modules:     modUVC_ctrlUVC_stm_ref0 BUF_odsTick_18 modUVC_ctrlUVC_stm_ref3 modUVC_ctrlUVC_stm_ref1 BUF_humanTick_17 modUVC_rpUVC BUF_robotTick_19 modUVC_ctrlUVC_stm_ref2 
+Variables:   sods srobot shuman modUVC_ctrlUVC_stm_ref0_scpc_8 modUVC_ctrlUVC_stm_ref0_exit_9 modUVC_ctrlUVC_stm_ref0_lock_7 BUF_odsTick_18_f modUVC_ctrlUVC_stm_ref3_ticks modUVC_ctrlUVC_stm_ref3_scpc_8 modUVC_ctrlUVC_stm_ref3_exit_9 modUVC_ctrlUVC_stm_ref3_lock_7 modUVC_ctrlUVC_stm_ref1_scpc_8 modUVC_ctrlUVC_stm_ref1_lock_7 modUVC_ctrlUVC_stm_ref1_exit_9 BUF_humanTick_17_f BUF_robotTick_19_f modUVC_ctrlUVC_stm_ref2_lock_7 modUVC_ctrlUVC_stm_ref2_scpc_8 modUVC_ctrlUVC_stm_ref2_exit_9 
+
+Parsing properties file "uvc_assertions.props"...
+
+13 properties:
+(1) "P_deadlock_freedom": (!E [ (F "deadlock") ])
+(2) "P_dangerous_C20_badOds_delibret": P=? [ (F (((shuman=SHuman_inRed)&(srobot=SRobot_transitionRow))&(modUVC_ctrlUVC_stm_ref3_ticks=t))) ]
+(3) "P_dangerous_C20_badOds_not_aware": P=? [ (F (((shuman=SHuman_inRed)&(srobot=SRobot_transitionRow))&(modUVC_ctrlUVC_stm_ref3_ticks=t))) ]
+(4) "P_dangerous_C20_badOds_less_aware": P=? [ (F (((shuman=SHuman_inRed)&(srobot=SRobot_transitionRow))&(modUVC_ctrlUVC_stm_ref3_ticks=t))) ]
+(5) "P_dangerous_C20_badOds_aware": P=? [ (F (((shuman=SHuman_inRed)&(srobot=SRobot_transitionRow))&(modUVC_ctrlUVC_stm_ref3_ticks=t))) ]
+(6) "P_dangerous_C20_goodOds_delibrate": P=? [ (F (((shuman=SHuman_inRed)&(srobot=SRobot_transitionRow))&(modUVC_ctrlUVC_stm_ref3_ticks=t))) ]
+(7) "P_dangerous_C20_goodOds_not_aware": P=? [ (F (((shuman=SHuman_inRed)&(srobot=SRobot_transitionRow))&(modUVC_ctrlUVC_stm_ref3_ticks=t))) ]
+(8) "P_dangerous_C20_goodOds_lessAware": P=? [ (F (((shuman=SHuman_inRed)&(srobot=SRobot_transitionRow))&(modUVC_ctrlUVC_stm_ref3_ticks=t))) ]
+(9) "P_dangerous_C20_goodOds_Aware": P=? [ (F (((shuman=SHuman_inRed)&(srobot=SRobot_transitionRow))&(modUVC_ctrlUVC_stm_ref3_ticks=t))) ]
+(10) "P_dangerous_C20_noOds_delibrate": P=? [ (F (((shuman=SHuman_inRed)&(srobot=SRobot_transitionRow))&(modUVC_ctrlUVC_stm_ref3_ticks=t))) ]
+(11) "P_dangerous_C20_noOds_not_aware": P=? [ (F (((shuman=SHuman_inRed)&(srobot=SRobot_transitionRow))&(modUVC_ctrlUVC_stm_ref3_ticks=t))) ]
+(12) "P_dangerous_C20_noOds_less_aware": P=? [ (F (((shuman=SHuman_inRed)&(srobot=SRobot_transitionRow))&(modUVC_ctrlUVC_stm_ref3_ticks=t))) ]
+(13) "P_dangerous_C20_noOds_aware": P=? [ (F (((shuman=SHuman_inRed)&(srobot=SRobot_transitionRow))&(modUVC_ctrlUVC_stm_ref3_ticks=t))) ]
+
+---------------------------------------------------------------------
+
+Model checking: "P_dangerous_C20_noOds_not_aware": P=? [ (F (((shuman=SHuman_inRed)&(srobot=SRobot_transitionRow))&(modUVC_ctrlUVC_stm_ref3_ticks=t))) ]
+Model constants: modUVC_ctrlUVC_stm_ref0_p_ods_green=0,modUVC_ctrlUVC_stm_ref0_p_ods_yellow=0,modUVC_ctrlUVC_stm_ref1_p_transition_ratio=0.1,modUVC_ctrlUVC_stm_ref2_p_approach_red=0.7,modUVC_ctrlUVC_stm_ref2_p_approach_robot=0.9,modUVC_ctrlUVC_stm_ref2_p_approach_yellow=0.9,modUVC_ctrlUVC_stm_ref2_p_aware_of_risk=0.01,modUVC_ctrlUVC_stm_ref3_N_ticks=20
+Property constants: t=7
+
+Building model...
+Model constants: modUVC_ctrlUVC_stm_ref0_p_ods_green=0,modUVC_ctrlUVC_stm_ref0_p_ods_yellow=0,modUVC_ctrlUVC_stm_ref1_p_transition_ratio=0.1,modUVC_ctrlUVC_stm_ref2_p_approach_red=0.7,modUVC_ctrlUVC_stm_ref2_p_approach_robot=0.9,modUVC_ctrlUVC_stm_ref2_p_approach_yellow=0.9,modUVC_ctrlUVC_stm_ref2_p_aware_of_risk=0.01,modUVC_ctrlUVC_stm_ref3_N_ticks=20
+
+Warning: Update 1 of command 5 of module "modUVC_ctrlUVC_stm_ref0" doesn't do anything (line 132, column 108)
+
+Warning: Update 1 of command 6 of module "modUVC_ctrlUVC_stm_ref0" doesn't do anything (line 135, column 107)
+
+Warning: Update 2 of command 12 of module "modUVC_ctrlUVC_stm_ref0" doesn't do anything (line 149, column 241)
+
+Warning: Update 1 of command 16 of module "modUVC_ctrlUVC_stm_ref0" doesn't do anything (line 161, column 107)
+
+Computing reachable states...
+
+Reachability (BFS): 154 iterations in 4.28 seconds (average 0.027773, setup 0.00)
+
+Time for model construction: 9.359 seconds.
+
+Type:        DTMC
+States:      664363 (1 initial)
+Transitions: 2698482
+
+Transition matrix: 41643 nodes (23 terminal), 2698482 minterms, vars: 52r/52c
+
+Prob0: 60 iterations in 1.50 seconds (average 0.025067, setup 0.00)
+
+Prob1: 39 iterations in 0.76 seconds (average 0.019462, setup 0.00)
+
+yes = 3684, no = 503380, maybe = 157299
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrix... [levels=52, nodes=74593] [3.4 MB]
+Adding explicit sparse matrices... [levels=29, num=1568, compact] [882.5 KB]
+Creating vector for diagonals... [dist=1, compact] [1.3 MB]
+Creating vector for RHS... [dist=2, compact] [1.3 MB]
+Allocating iteration vectors... [2 x 5.1 MB]
+TOTAL: [16.9 MB]
+
+Starting iterations...
+
+Jacobi: 127 iterations in 4.13 seconds (average 0.016307, setup 2.06)
+
+Value in the initial state: 0.1675346995635717
+
+Time for model checking: 9.574 seconds.
+
+Result: 0.1675346995635717 (value in the initial state)
+
+---------------------------------------------------------------------
+
+Note: There were 4 warnings during computation.
+

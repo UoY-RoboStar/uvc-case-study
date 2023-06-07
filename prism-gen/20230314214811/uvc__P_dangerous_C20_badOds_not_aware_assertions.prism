@@ -1,0 +1,428 @@
+// This model is automatically generated from the RoboChart model 
+// by the translator (translate2prism v20210516) plugin in RoboTool
+// on 2023-03-14 21:16:24
+// 
+// All changes made will be lost after regeneration. 
+ 
+
+// PRISM Output
+
+dtmc
+
+const int SHuman_outOfRange = (0);
+const int SHuman_inGreen = (1);
+const int SHuman_inYellow = (2);
+const int SHuman_inRed = (3);
+const int SODS_noHumanDetected = (0);
+const int SODS_humanDetectedInGreen = (1);
+const int SODS_humanDetectedInYellow = (2);
+const int SRobot_alongRow = (0);
+const int SRobot_transitionRow = (1);
+const int SRobot_paused = (2);
+const int Action_20 = (4);
+const int Action_21 = (5);
+const int Action_22 = (6);
+const int Action_23 = (7);
+const int modUVC_ctrlUVC_stm_ref0_HumanDetectedInGreen = (6);
+const int modUVC_ctrlUVC_stm_ref0_HumanDetectedInGreen_entering = (1);
+const int modUVC_ctrlUVC_stm_ref0_HumanDetectedInYellow = (9);
+const int modUVC_ctrlUVC_stm_ref0_HumanDetectedInYellow_entering = (2);
+const int modUVC_ctrlUVC_stm_ref0_INACTIVE_10 = (0);
+const int modUVC_ctrlUVC_stm_ref0_LOCK_FREE = (0);
+const int modUVC_ctrlUVC_stm_ref0_NoHumanDetected = (11);
+const int modUVC_ctrlUVC_stm_ref0_NoHumanDetected_entering = (3);
+const int modUVC_ctrlUVC_stm_ref0_TERMINATED_11 = (12);
+const int modUVC_ctrlUVC_stm_ref0_i0 = (10);
+const int modUVC_ctrlUVC_stm_ref0_p0 = (5);
+const int modUVC_ctrlUVC_stm_ref0_p1 = (4);
+const int modUVC_ctrlUVC_stm_ref0_p2 = (7);
+const int modUVC_ctrlUVC_stm_ref0_p3 = (8);
+const double modUVC_ctrlUVC_stm_ref0_p_ods_green;
+const double modUVC_ctrlUVC_stm_ref0_p_ods_yellow;
+const int modUVC_ctrlUVC_stm_ref0_t0 = (5);
+const int modUVC_ctrlUVC_stm_ref0_t1 = (6);
+const int modUVC_ctrlUVC_stm_ref0_t10 = (2);
+const int modUVC_ctrlUVC_stm_ref0_t11 = (4);
+const int modUVC_ctrlUVC_stm_ref0_t12 = (3);
+const int modUVC_ctrlUVC_stm_ref0_t4 = (7);
+const int modUVC_ctrlUVC_stm_ref0_t7 = (1);
+const int modUVC_ctrlUVC_stm_ref1_INACTIVE_10 = (0);
+const int modUVC_ctrlUVC_stm_ref1_LOCK_FREE = (0);
+const int modUVC_ctrlUVC_stm_ref1_MoveAlongRow = (8);
+const int modUVC_ctrlUVC_stm_ref1_MoveAlongRow_entering = (3);
+const int modUVC_ctrlUVC_stm_ref1_Paused = (4);
+const int modUVC_ctrlUVC_stm_ref1_Paused_entering = (1);
+const int modUVC_ctrlUVC_stm_ref1_TERMINATED_11 = (10);
+const int modUVC_ctrlUVC_stm_ref1_TransitionBetweenRows = (5);
+const int modUVC_ctrlUVC_stm_ref1_TransitionBetweenRows_entering = (2);
+const int modUVC_ctrlUVC_stm_ref1_i0 = (9);
+const int modUVC_ctrlUVC_stm_ref1_p0 = (6);
+const int modUVC_ctrlUVC_stm_ref1_p1 = (7);
+const double modUVC_ctrlUVC_stm_ref1_p_transition_ratio;
+const int modUVC_ctrlUVC_stm_ref1_t0 = (6);
+const int modUVC_ctrlUVC_stm_ref1_t1 = (5);
+const int modUVC_ctrlUVC_stm_ref1_t2 = (2);
+const int modUVC_ctrlUVC_stm_ref1_t3 = (3);
+const int modUVC_ctrlUVC_stm_ref1_t4 = (1);
+const int modUVC_ctrlUVC_stm_ref1_t5 = (4);
+const int modUVC_ctrlUVC_stm_ref2_INACTIVE_10 = (0);
+const int modUVC_ctrlUVC_stm_ref2_InGreenZone = (6);
+const int modUVC_ctrlUVC_stm_ref2_InGreenZone_entering = (1);
+const int modUVC_ctrlUVC_stm_ref2_InRedZone = (12);
+const int modUVC_ctrlUVC_stm_ref2_InRedZone_entering = (4);
+const int modUVC_ctrlUVC_stm_ref2_InYellowZone = (9);
+const int modUVC_ctrlUVC_stm_ref2_InYellowZone_entering = (3);
+const int modUVC_ctrlUVC_stm_ref2_LOCK_FREE = (0);
+const int modUVC_ctrlUVC_stm_ref2_OutOfRange = (7);
+const int modUVC_ctrlUVC_stm_ref2_OutOfRange_entering = (2);
+const int modUVC_ctrlUVC_stm_ref2_TERMINATED_11 = (14);
+const int modUVC_ctrlUVC_stm_ref2_i0 = (8);
+const int modUVC_ctrlUVC_stm_ref2_p0 = (11);
+const int modUVC_ctrlUVC_stm_ref2_p1 = (5);
+const int modUVC_ctrlUVC_stm_ref2_p2 = (10);
+const int modUVC_ctrlUVC_stm_ref2_p3 = (13);
+const double modUVC_ctrlUVC_stm_ref2_p_approach_red;
+const double modUVC_ctrlUVC_stm_ref2_p_approach_robot;
+const double modUVC_ctrlUVC_stm_ref2_p_approach_yellow;
+const double modUVC_ctrlUVC_stm_ref2_p_aware_of_risk;
+const int modUVC_ctrlUVC_stm_ref2_t0 = (3);
+const int modUVC_ctrlUVC_stm_ref2_t1 = (2);
+const int modUVC_ctrlUVC_stm_ref2_t10 = (5);
+const int modUVC_ctrlUVC_stm_ref2_t4 = (1);
+const int modUVC_ctrlUVC_stm_ref2_t7 = (4);
+const int modUVC_ctrlUVC_stm_ref3_INACTIVE_10 = (0);
+const int modUVC_ctrlUVC_stm_ref3_LOCK_FREE = (0);
+const int modUVC_ctrlUVC_stm_ref3_N_ticks;
+const int modUVC_ctrlUVC_stm_ref3_RelayEvent = (3);
+const int modUVC_ctrlUVC_stm_ref3_TERMINATED_11 = (8);
+const int modUVC_ctrlUVC_stm_ref3_i0 = (2);
+const int modUVC_ctrlUVC_stm_ref3_sp1_2 = (2);
+const int modUVC_ctrlUVC_stm_ref3_sp_pj_1 = (1);
+const int modUVC_ctrlUVC_stm_ref3_t0 = (1);
+const int Exit_Sub_ACT = (4);
+const int Exit_ACT_Parent = (1);
+const int Exit_EXITED = (3);
+const int Exit_Sub_ACT_Waiting = (5);
+const int Exit_NONE = (0);
+const int Exit_ACT_Trans = (2);
+const int Exit_Sub_EXITED = (6);
+global sods : [0..2];
+global srobot : [0..2];
+global shuman : [0..3];
+
+
+// For the state machine [ODSSTM] in the controller [ctrlUVC]
+module modUVC_ctrlUVC_stm_ref0
+    modUVC_ctrlUVC_stm_ref0_scpc_8 : [0..11] init modUVC_ctrlUVC_stm_ref0_i0;
+    modUVC_ctrlUVC_stm_ref0_exit_9 : [0..6] init Exit_NONE;
+    modUVC_ctrlUVC_stm_ref0_lock_7 : [0..7] init modUVC_ctrlUVC_stm_ref0_LOCK_FREE;
+
+    
+    // The transition [t11] from a state [HumanDetectedInYellow] to [NoHumanDetected].Step 1: trigger an exit of the state [HumanDetectedInYellow]
+    [IN_BUF__odsTick_18] ((shuman=SHuman_outOfRange))&(((modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_HumanDetectedInYellow))&((modUVC_ctrlUVC_stm_ref0_lock_7=modUVC_ctrlUVC_stm_ref0_LOCK_FREE))) -> (modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_NoHumanDetected_entering)&(modUVC_ctrlUVC_stm_ref0_lock_7'=modUVC_ctrlUVC_stm_ref0_t11);
+    [] (modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_HumanDetectedInGreen_entering) -> (sods'=SODS_humanDetectedInGreen)&(modUVC_ctrlUVC_stm_ref0_lock_7'=modUVC_ctrlUVC_stm_ref0_LOCK_FREE)&(modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_HumanDetectedInGreen);
+    
+    // The transition [t7] from a state [HumanDetectedInGreen] to [p2].Step 1: trigger an exit of the state [HumanDetectedInGreen]
+    [IN_BUF__odsTick_18] ((shuman=SHuman_inYellow))&(((modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_HumanDetectedInGreen))&((modUVC_ctrlUVC_stm_ref0_lock_7=modUVC_ctrlUVC_stm_ref0_LOCK_FREE))) -> (modUVC_ctrlUVC_stm_ref0_lock_7'=modUVC_ctrlUVC_stm_ref0_t7)&(modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_p2);
+    
+    // The transition [t10] from a state [HumanDetectedInGreen] to [NoHumanDetected].Step 1: trigger an exit of the state [HumanDetectedInGreen]
+    [IN_BUF__odsTick_18] ((modUVC_ctrlUVC_stm_ref0_lock_7=modUVC_ctrlUVC_stm_ref0_LOCK_FREE))&(((modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_HumanDetectedInGreen))&((shuman=SHuman_outOfRange))) -> (modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_NoHumanDetected_entering)&(modUVC_ctrlUVC_stm_ref0_lock_7'=modUVC_ctrlUVC_stm_ref0_t10);
+    
+    // From the probabilistic junction [p1]
+    [] (modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_p1) -> modUVC_ctrlUVC_stm_ref0_p_ods_yellow:(modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_HumanDetectedInYellow_entering) + ((1)-modUVC_ctrlUVC_stm_ref0_p_ods_yellow):(modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_NoHumanDetected_entering);
+    
+    // From the probabilistic junction [p3]
+    [] (modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_p3) -> modUVC_ctrlUVC_stm_ref0_p_ods_green:(modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_HumanDetectedInGreen_entering) + ((1)-modUVC_ctrlUVC_stm_ref0_p_ods_green):(modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_HumanDetectedInYellow_entering);
+    [] (modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_HumanDetectedInYellow_entering) -> (modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_HumanDetectedInYellow)&(modUVC_ctrlUVC_stm_ref0_lock_7'=modUVC_ctrlUVC_stm_ref0_LOCK_FREE)&(sods'=SODS_humanDetectedInYellow);
+    [] (modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_NoHumanDetected_entering) -> (modUVC_ctrlUVC_stm_ref0_lock_7'=modUVC_ctrlUVC_stm_ref0_LOCK_FREE)&(modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_NoHumanDetected)&(sods'=SODS_noHumanDetected);
+    
+    // The transition [t4] from a state [NoHumanDetected] to [p1].Step 1: trigger an exit of the state [NoHumanDetected]
+    [IN_BUF__odsTick_18] ((modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_NoHumanDetected))&(((modUVC_ctrlUVC_stm_ref0_lock_7=modUVC_ctrlUVC_stm_ref0_LOCK_FREE))&((shuman=SHuman_inYellow))) -> (modUVC_ctrlUVC_stm_ref0_lock_7'=modUVC_ctrlUVC_stm_ref0_t4)&(modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_p1);
+    
+    // The transition [t12] from a state [HumanDetectedInYellow] to [p3].Step 1: trigger an exit of the state [HumanDetectedInYellow]
+    [IN_BUF__odsTick_18] ((shuman=SHuman_inGreen))&(((modUVC_ctrlUVC_stm_ref0_lock_7=modUVC_ctrlUVC_stm_ref0_LOCK_FREE))&((modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_HumanDetectedInYellow))) -> (modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_p3)&(modUVC_ctrlUVC_stm_ref0_lock_7'=modUVC_ctrlUVC_stm_ref0_t12);
+    
+    // The transition [t1] from a state [NoHumanDetected] to [p0].Step 1: trigger an exit of the state [NoHumanDetected]
+    [IN_BUF__odsTick_18] ((modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_NoHumanDetected))&(((modUVC_ctrlUVC_stm_ref0_lock_7=modUVC_ctrlUVC_stm_ref0_LOCK_FREE))&((shuman=SHuman_inGreen))) -> (modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_p0)&(modUVC_ctrlUVC_stm_ref0_lock_7'=modUVC_ctrlUVC_stm_ref0_t1);
+    
+    // From the probabilistic junction [p2]
+    [] (modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_p2) -> ((1)-modUVC_ctrlUVC_stm_ref0_p_ods_yellow):(modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_HumanDetectedInGreen_entering) + modUVC_ctrlUVC_stm_ref0_p_ods_yellow:(modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_HumanDetectedInYellow_entering);
+    
+    // Step 4/2: exit command of the state [NoHumanDetected]
+    [] ((modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_NoHumanDetected))&((modUVC_ctrlUVC_stm_ref0_exit_9=Exit_Sub_ACT)) -> (modUVC_ctrlUVC_stm_ref0_exit_9'=Exit_Sub_EXITED);
+    
+    // The transition [t0] from [i0] to [NoHumanDetected].
+    [] (modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_i0) -> (modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_NoHumanDetected_entering);
+    
+    // Step 4/2: exit command of the state [HumanDetectedInYellow]
+    [] ((modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_HumanDetectedInYellow))&((modUVC_ctrlUVC_stm_ref0_exit_9=Exit_Sub_ACT)) -> (modUVC_ctrlUVC_stm_ref0_exit_9'=Exit_Sub_EXITED);
+    
+    // From the probabilistic junction [p0]
+    [] (modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_p0) -> modUVC_ctrlUVC_stm_ref0_p_ods_green:(modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_HumanDetectedInGreen_entering) + ((1)-modUVC_ctrlUVC_stm_ref0_p_ods_green):(modUVC_ctrlUVC_stm_ref0_scpc_8'=modUVC_ctrlUVC_stm_ref0_NoHumanDetected_entering);
+    
+    // Step 4/2: exit command of the state [HumanDetectedInGreen]
+    [] ((modUVC_ctrlUVC_stm_ref0_scpc_8=modUVC_ctrlUVC_stm_ref0_HumanDetectedInGreen))&((modUVC_ctrlUVC_stm_ref0_exit_9=Exit_Sub_ACT)) -> (modUVC_ctrlUVC_stm_ref0_exit_9'=Exit_Sub_EXITED);
+endmodule
+
+// For the asynchronous connection on the event [odsTick] of [stm_ref3] ==> the event [tick] of [stm_ref0]
+module BUF_odsTick_18
+    BUF_odsTick_18_f : bool init false;
+
+    [OUT_BUF__odsTick_18] true -> (BUF_odsTick_18_f'=true);
+    [IN_BUF__odsTick_18] (BUF_odsTick_18_f=true) -> (BUF_odsTick_18_f'=false);
+endmodule
+
+// For the state machine [EventRelaySTM] in the controller [ctrlUVC]
+module modUVC_ctrlUVC_stm_ref3
+    modUVC_ctrlUVC_stm_ref3_ticks : [0..20] init (0);
+    modUVC_ctrlUVC_stm_ref3_scpc_8 : [0..7] init modUVC_ctrlUVC_stm_ref3_i0;
+    modUVC_ctrlUVC_stm_ref3_exit_9 : [0..6] init Exit_NONE;
+    modUVC_ctrlUVC_stm_ref3_lock_7 : [0..2] init modUVC_ctrlUVC_stm_ref3_LOCK_FREE;
+
+    
+    // Step 4/2: exit command of the state [RelayEvent]
+    [] ((modUVC_ctrlUVC_stm_ref3_scpc_8=modUVC_ctrlUVC_stm_ref3_RelayEvent))&((modUVC_ctrlUVC_stm_ref3_exit_9=Exit_Sub_ACT)) -> (modUVC_ctrlUVC_stm_ref3_exit_9'=Exit_Sub_EXITED);
+    
+    // The transition [t0] from [i0] to [RelayEvent].
+    [] (modUVC_ctrlUVC_stm_ref3_scpc_8=modUVC_ctrlUVC_stm_ref3_i0) -> (modUVC_ctrlUVC_stm_ref3_lock_7'=modUVC_ctrlUVC_stm_ref3_LOCK_FREE)&(modUVC_ctrlUVC_stm_ref3_scpc_8'=modUVC_ctrlUVC_stm_ref3_RelayEvent);
+    [OUT_BUF__humanTick_17] (modUVC_ctrlUVC_stm_ref3_scpc_8=Action_23) -> (modUVC_ctrlUVC_stm_ref3_scpc_8'=Action_22);
+    [OUT_BUF__odsTick_18] (modUVC_ctrlUVC_stm_ref3_scpc_8=Action_22) -> (modUVC_ctrlUVC_stm_ref3_scpc_8'=Action_21);
+    
+    // From the probabilistic junction [sp_pj_1]
+    [] (modUVC_ctrlUVC_stm_ref3_scpc_8=modUVC_ctrlUVC_stm_ref3_sp_pj_1) -> (modUVC_ctrlUVC_stm_ref3_scpc_8'=Action_23);
+    [OUT_BUF__robotTick_19] (modUVC_ctrlUVC_stm_ref3_scpc_8=Action_21) -> (modUVC_ctrlUVC_stm_ref3_scpc_8'=Action_20);
+    
+    // The transition [sp1_2] from a state [RelayEvent] to [sp_pj_1].Step 1: trigger an exit of the state [RelayEvent]
+    [RP__tick_16] ((modUVC_ctrlUVC_stm_ref3_scpc_8=modUVC_ctrlUVC_stm_ref3_RelayEvent))&((modUVC_ctrlUVC_stm_ref3_lock_7=modUVC_ctrlUVC_stm_ref3_LOCK_FREE)) -> (modUVC_ctrlUVC_stm_ref3_scpc_8'=modUVC_ctrlUVC_stm_ref3_sp_pj_1)&(modUVC_ctrlUVC_stm_ref3_lock_7'=modUVC_ctrlUVC_stm_ref3_sp1_2);
+    [] (modUVC_ctrlUVC_stm_ref3_scpc_8=Action_20) -> (modUVC_ctrlUVC_stm_ref3_lock_7'=modUVC_ctrlUVC_stm_ref3_LOCK_FREE)&(modUVC_ctrlUVC_stm_ref3_scpc_8'=modUVC_ctrlUVC_stm_ref3_RelayEvent)&(modUVC_ctrlUVC_stm_ref3_ticks'=(modUVC_ctrlUVC_stm_ref3_ticks<modUVC_ctrlUVC_stm_ref3_N_ticks?(modUVC_ctrlUVC_stm_ref3_ticks+(1)):modUVC_ctrlUVC_stm_ref3_ticks));
+endmodule
+
+// For the state machine [RobotSTM] in the controller [ctrlUVC]
+module modUVC_ctrlUVC_stm_ref1
+    modUVC_ctrlUVC_stm_ref1_scpc_8 : [0..9] init modUVC_ctrlUVC_stm_ref1_i0;
+    modUVC_ctrlUVC_stm_ref1_lock_7 : [0..6] init modUVC_ctrlUVC_stm_ref1_LOCK_FREE;
+    modUVC_ctrlUVC_stm_ref1_exit_9 : [0..6] init Exit_NONE;
+
+    
+    // Step 4/2: exit command of the state [TransitionBetweenRows]
+    [] ((modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_TransitionBetweenRows))&((modUVC_ctrlUVC_stm_ref1_exit_9=Exit_Sub_ACT)) -> (modUVC_ctrlUVC_stm_ref1_exit_9'=Exit_Sub_EXITED);
+    
+    // From the probabilistic junction [p1]
+    [] (modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_p1) -> ((1)-modUVC_ctrlUVC_stm_ref1_p_transition_ratio):(modUVC_ctrlUVC_stm_ref1_scpc_8'=modUVC_ctrlUVC_stm_ref1_MoveAlongRow_entering) + modUVC_ctrlUVC_stm_ref1_p_transition_ratio:(modUVC_ctrlUVC_stm_ref1_scpc_8'=modUVC_ctrlUVC_stm_ref1_TransitionBetweenRows_entering);
+    [] (modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_TransitionBetweenRows_entering) -> (srobot'=SRobot_transitionRow)&(modUVC_ctrlUVC_stm_ref1_lock_7'=modUVC_ctrlUVC_stm_ref1_LOCK_FREE)&(modUVC_ctrlUVC_stm_ref1_scpc_8'=modUVC_ctrlUVC_stm_ref1_TransitionBetweenRows);
+    [] (modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_MoveAlongRow_entering) -> (modUVC_ctrlUVC_stm_ref1_scpc_8'=modUVC_ctrlUVC_stm_ref1_MoveAlongRow)&(srobot'=SRobot_alongRow)&(modUVC_ctrlUVC_stm_ref1_lock_7'=modUVC_ctrlUVC_stm_ref1_LOCK_FREE);
+    
+    // The transition [t1] from a state [MoveAlongRow] to [p0].Step 1: trigger an exit of the state [MoveAlongRow]
+    [IN_BUF__robotTick_19] ((modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_MoveAlongRow))&(((sods=SODS_noHumanDetected))&((modUVC_ctrlUVC_stm_ref1_lock_7=modUVC_ctrlUVC_stm_ref1_LOCK_FREE))) -> (modUVC_ctrlUVC_stm_ref1_lock_7'=modUVC_ctrlUVC_stm_ref1_t1)&(modUVC_ctrlUVC_stm_ref1_scpc_8'=modUVC_ctrlUVC_stm_ref1_p0);
+    
+    // The transition [t4] from a state [Paused] to [MoveAlongRow].Step 1: trigger an exit of the state [Paused]
+    [IN_BUF__robotTick_19] ((modUVC_ctrlUVC_stm_ref1_lock_7=modUVC_ctrlUVC_stm_ref1_LOCK_FREE))&(((sods=SODS_noHumanDetected))&((modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_Paused))) -> (modUVC_ctrlUVC_stm_ref1_lock_7'=modUVC_ctrlUVC_stm_ref1_t4)&(modUVC_ctrlUVC_stm_ref1_scpc_8'=modUVC_ctrlUVC_stm_ref1_MoveAlongRow_entering);
+    
+    // The transition [t5] from a state [MoveAlongRow] to [Paused].Step 1: trigger an exit of the state [MoveAlongRow]
+    [IN_BUF__robotTick_19] ((modUVC_ctrlUVC_stm_ref1_lock_7=modUVC_ctrlUVC_stm_ref1_LOCK_FREE))&(((modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_MoveAlongRow))&((sods!=SODS_noHumanDetected))) -> (modUVC_ctrlUVC_stm_ref1_lock_7'=modUVC_ctrlUVC_stm_ref1_t5)&(modUVC_ctrlUVC_stm_ref1_scpc_8'=modUVC_ctrlUVC_stm_ref1_Paused_entering);
+    
+    // The transition [t2] from a state [TransitionBetweenRows] to [p1].Step 1: trigger an exit of the state [TransitionBetweenRows]
+    [IN_BUF__robotTick_19] ((sods=SODS_noHumanDetected))&(((modUVC_ctrlUVC_stm_ref1_lock_7=modUVC_ctrlUVC_stm_ref1_LOCK_FREE))&((modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_TransitionBetweenRows))) -> (modUVC_ctrlUVC_stm_ref1_lock_7'=modUVC_ctrlUVC_stm_ref1_t2)&(modUVC_ctrlUVC_stm_ref1_scpc_8'=modUVC_ctrlUVC_stm_ref1_p1);
+    
+    // Step 4/2: exit command of the state [MoveAlongRow]
+    [] ((modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_MoveAlongRow))&((modUVC_ctrlUVC_stm_ref1_exit_9=Exit_Sub_ACT)) -> (modUVC_ctrlUVC_stm_ref1_exit_9'=Exit_Sub_EXITED);
+    
+    // From the probabilistic junction [p0]
+    [] (modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_p0) -> modUVC_ctrlUVC_stm_ref1_p_transition_ratio:(modUVC_ctrlUVC_stm_ref1_scpc_8'=modUVC_ctrlUVC_stm_ref1_TransitionBetweenRows_entering) + ((1)-modUVC_ctrlUVC_stm_ref1_p_transition_ratio):(modUVC_ctrlUVC_stm_ref1_scpc_8'=modUVC_ctrlUVC_stm_ref1_MoveAlongRow_entering);
+    
+    // Step 4/2: exit command of the state [Paused]
+    [] ((modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_Paused))&((modUVC_ctrlUVC_stm_ref1_exit_9=Exit_Sub_ACT)) -> (modUVC_ctrlUVC_stm_ref1_exit_9'=Exit_Sub_EXITED);
+    
+    // The transition [t3] from a state [TransitionBetweenRows] to [Paused].Step 1: trigger an exit of the state [TransitionBetweenRows]
+    [IN_BUF__robotTick_19] ((sods!=SODS_noHumanDetected))&(((modUVC_ctrlUVC_stm_ref1_lock_7=modUVC_ctrlUVC_stm_ref1_LOCK_FREE))&((modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_TransitionBetweenRows))) -> (modUVC_ctrlUVC_stm_ref1_scpc_8'=modUVC_ctrlUVC_stm_ref1_Paused_entering)&(modUVC_ctrlUVC_stm_ref1_lock_7'=modUVC_ctrlUVC_stm_ref1_t3);
+    [] (modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_Paused_entering) -> (modUVC_ctrlUVC_stm_ref1_scpc_8'=modUVC_ctrlUVC_stm_ref1_Paused)&(modUVC_ctrlUVC_stm_ref1_lock_7'=modUVC_ctrlUVC_stm_ref1_LOCK_FREE)&(srobot'=SRobot_paused);
+    
+    // The transition [t0] from [i0] to [MoveAlongRow].
+    [] (modUVC_ctrlUVC_stm_ref1_scpc_8=modUVC_ctrlUVC_stm_ref1_i0) -> (modUVC_ctrlUVC_stm_ref1_scpc_8'=modUVC_ctrlUVC_stm_ref1_MoveAlongRow_entering);
+endmodule
+
+// For the asynchronous connection on the event [humanTick] of [stm_ref3] ==> the event [tick] of [stm_ref2]
+module BUF_humanTick_17
+    BUF_humanTick_17_f : bool init false;
+
+    [OUT_BUF__humanTick_17] true -> (BUF_humanTick_17_f'=true);
+    [IN_BUF__humanTick_17] (BUF_humanTick_17_f=true) -> (BUF_humanTick_17_f'=false);
+endmodule
+
+// For the robotic platform [rpUVC]
+module modUVC_rpUVC
+
+    [RP__tick_16] true -> true;
+endmodule
+
+// For the asynchronous connection on the event [robotTick] of [stm_ref3] ==> the event [tick] of [stm_ref1]
+module BUF_robotTick_19
+    BUF_robotTick_19_f : bool init false;
+
+    [OUT_BUF__robotTick_19] true -> (BUF_robotTick_19_f'=true);
+    [IN_BUF__robotTick_19] (BUF_robotTick_19_f=true) -> (BUF_robotTick_19_f'=false);
+endmodule
+
+// For the state machine [HumanSTM] in the controller [ctrlUVC]
+module modUVC_ctrlUVC_stm_ref2
+    modUVC_ctrlUVC_stm_ref2_lock_7 : [0..5] init modUVC_ctrlUVC_stm_ref2_LOCK_FREE;
+    modUVC_ctrlUVC_stm_ref2_scpc_8 : [0..13] init modUVC_ctrlUVC_stm_ref2_i0;
+    modUVC_ctrlUVC_stm_ref2_exit_9 : [0..6] init Exit_NONE;
+
+    
+    // The transition [t10] from a state [InRedZone] to [p3].Step 1: trigger an exit of the state [InRedZone]
+    [IN_BUF__humanTick_17] ((modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_InRedZone))&((modUVC_ctrlUVC_stm_ref2_lock_7=modUVC_ctrlUVC_stm_ref2_LOCK_FREE)) -> (modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_p3)&(modUVC_ctrlUVC_stm_ref2_lock_7'=modUVC_ctrlUVC_stm_ref2_t10);
+    
+    // From the probabilistic junction [p3]
+    [] (modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_p3) -> ((1)-modUVC_ctrlUVC_stm_ref2_p_aware_of_risk):(modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_InRedZone_entering) + modUVC_ctrlUVC_stm_ref2_p_aware_of_risk:(modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_OutOfRange_entering);
+    [] (modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_InGreenZone_entering) -> (modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_InGreenZone)&(shuman'=SHuman_inGreen)&(modUVC_ctrlUVC_stm_ref2_lock_7'=modUVC_ctrlUVC_stm_ref2_LOCK_FREE);
+    
+    // Step 4/2: exit command of the state [InYellowZone]
+    [] ((modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_InYellowZone))&((modUVC_ctrlUVC_stm_ref2_exit_9=Exit_Sub_ACT)) -> (modUVC_ctrlUVC_stm_ref2_exit_9'=Exit_Sub_EXITED);
+    
+    // From the probabilistic junction [p1]
+    [] (modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_p1) -> modUVC_ctrlUVC_stm_ref2_p_approach_yellow:(modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_InYellowZone_entering) + ((1)-modUVC_ctrlUVC_stm_ref2_p_approach_yellow):(modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_OutOfRange_entering);
+    
+    // The transition [t1] from a state [OutOfRange] to [p0].Step 1: trigger an exit of the state [OutOfRange]
+    [IN_BUF__humanTick_17] ((modUVC_ctrlUVC_stm_ref2_lock_7=modUVC_ctrlUVC_stm_ref2_LOCK_FREE))&((modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_OutOfRange)) -> (modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_p0)&(modUVC_ctrlUVC_stm_ref2_lock_7'=modUVC_ctrlUVC_stm_ref2_t1);
+    [] (modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_OutOfRange_entering) -> (modUVC_ctrlUVC_stm_ref2_lock_7'=modUVC_ctrlUVC_stm_ref2_LOCK_FREE)&(modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_OutOfRange)&(shuman'=SHuman_outOfRange);
+    [] (modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_InYellowZone_entering) -> (shuman'=SHuman_inYellow)&(modUVC_ctrlUVC_stm_ref2_lock_7'=modUVC_ctrlUVC_stm_ref2_LOCK_FREE)&(modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_InYellowZone);
+    
+    // The transition [t4] from a state [InGreenZone] to [p1].Step 1: trigger an exit of the state [InGreenZone]
+    [IN_BUF__humanTick_17] ((modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_InGreenZone))&((modUVC_ctrlUVC_stm_ref2_lock_7=modUVC_ctrlUVC_stm_ref2_LOCK_FREE)) -> (modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_p1)&(modUVC_ctrlUVC_stm_ref2_lock_7'=modUVC_ctrlUVC_stm_ref2_t4);
+    
+    // Step 4/2: exit command of the state [InRedZone]
+    [] ((modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_InRedZone))&((modUVC_ctrlUVC_stm_ref2_exit_9=Exit_Sub_ACT)) -> (modUVC_ctrlUVC_stm_ref2_exit_9'=Exit_Sub_EXITED);
+    
+    // From the probabilistic junction [p2]
+    [] (modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_p2) -> ((1)-modUVC_ctrlUVC_stm_ref2_p_approach_red):(modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_InGreenZone_entering) + modUVC_ctrlUVC_stm_ref2_p_approach_red:(modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_InRedZone_entering);
+    
+    // The transition [t0] from [i0] to [OutOfRange].
+    [] (modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_i0) -> (modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_OutOfRange_entering);
+    
+    // From the probabilistic junction [p0]
+    [] (modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_p0) -> modUVC_ctrlUVC_stm_ref2_p_approach_robot:(modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_InGreenZone_entering) + ((1)-modUVC_ctrlUVC_stm_ref2_p_approach_robot):(modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_OutOfRange_entering);
+    
+    // The transition [t7] from a state [InYellowZone] to [p2].Step 1: trigger an exit of the state [InYellowZone]
+    [IN_BUF__humanTick_17] ((modUVC_ctrlUVC_stm_ref2_lock_7=modUVC_ctrlUVC_stm_ref2_LOCK_FREE))&((modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_InYellowZone)) -> (modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_p2)&(modUVC_ctrlUVC_stm_ref2_lock_7'=modUVC_ctrlUVC_stm_ref2_t7);
+    
+    // Step 4/2: exit command of the state [InGreenZone]
+    [] ((modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_InGreenZone))&((modUVC_ctrlUVC_stm_ref2_exit_9=Exit_Sub_ACT)) -> (modUVC_ctrlUVC_stm_ref2_exit_9'=Exit_Sub_EXITED);
+    
+    // Step 4/2: exit command of the state [OutOfRange]
+    [] ((modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_OutOfRange))&((modUVC_ctrlUVC_stm_ref2_exit_9=Exit_Sub_ACT)) -> (modUVC_ctrlUVC_stm_ref2_exit_9'=Exit_Sub_EXITED);
+    [] (modUVC_ctrlUVC_stm_ref2_scpc_8=modUVC_ctrlUVC_stm_ref2_InRedZone_entering) -> (shuman'=SHuman_inRed)&(modUVC_ctrlUVC_stm_ref2_lock_7'=modUVC_ctrlUVC_stm_ref2_LOCK_FREE)&(modUVC_ctrlUVC_stm_ref2_scpc_8'=modUVC_ctrlUVC_stm_ref2_InRedZone);
+endmodule
+
+// Renames of RoboChart elements (automatically generated and used by the assertion language and don't delete)
+// renames of the STM [modUVC::ctrlUVC::stm_ref0] to [modUVC_ctrlUVC_stm_ref0]
+// renames of the event [modUVC::ctrlUVC::stm_ref0::tick::IN] to [IN_BUF__odsTick_18]
+// renames of the constant [modUVC::ctrlUVC::stm_ref0::p_ods_yellow] to [modUVC_ctrlUVC_stm_ref0_p_ods_yellow]
+// renames of the constant [modUVC::ctrlUVC::stm_ref0::p_ods_green] to [modUVC_ctrlUVC_stm_ref0_p_ods_green]
+// renames of the node [modUVC::ctrlUVC::stm_ref0::p0] to [modUVC_ctrlUVC_stm_ref0_p0]
+// renames of the node [modUVC::ctrlUVC::stm_ref0::HumanDetectedInGreen] to [modUVC_ctrlUVC_stm_ref0_HumanDetectedInGreen]
+// renames of the node [modUVC::ctrlUVC::stm_ref0::p3] to [modUVC_ctrlUVC_stm_ref0_p3]
+// renames of the node [modUVC::ctrlUVC::stm_ref0::HumanDetectedInYellow] to [modUVC_ctrlUVC_stm_ref0_HumanDetectedInYellow]
+// renames of the node [modUVC::ctrlUVC::stm_ref0::p2] to [modUVC_ctrlUVC_stm_ref0_p2]
+// renames of the node [modUVC::ctrlUVC::stm_ref0::p1] to [modUVC_ctrlUVC_stm_ref0_p1]
+// renames of the node [modUVC::ctrlUVC::stm_ref0::i0] to [modUVC_ctrlUVC_stm_ref0_i0]
+// renames of the node [modUVC::ctrlUVC::stm_ref0::NoHumanDetected] to [modUVC_ctrlUVC_stm_ref0_NoHumanDetected]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t7] to [modUVC_ctrlUVC_stm_ref0_t7]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t1] to [modUVC_ctrlUVC_stm_ref0_t1]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t13] to [modUVC_ctrlUVC_stm_ref0_t13]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t14] to [modUVC_ctrlUVC_stm_ref0_t14]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t4] to [modUVC_ctrlUVC_stm_ref0_t4]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t12] to [modUVC_ctrlUVC_stm_ref0_t12]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t6] to [modUVC_ctrlUVC_stm_ref0_t6]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t9] to [modUVC_ctrlUVC_stm_ref0_t9]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t0] to [modUVC_ctrlUVC_stm_ref0_t0]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t5] to [modUVC_ctrlUVC_stm_ref0_t5]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t10] to [modUVC_ctrlUVC_stm_ref0_t10]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t11] to [modUVC_ctrlUVC_stm_ref0_t11]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t8] to [modUVC_ctrlUVC_stm_ref0_t8]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t3] to [modUVC_ctrlUVC_stm_ref0_t3]
+// renames of the transition [modUVC::ctrlUVC::stm_ref0::t2] to [modUVC_ctrlUVC_stm_ref0_t2]
+// renames of the variable [modUVC::ctrlUVC::stm_ref0::exit_9] to [modUVC_ctrlUVC_stm_ref0_exit_9]
+// renames of the variable [modUVC::ctrlUVC::stm_ref0::scpc_8] to [modUVC_ctrlUVC_stm_ref0_scpc_8]
+// renames of the variable [modUVC::ctrlUVC::stm_ref0::lock_7] to [modUVC_ctrlUVC_stm_ref0_lock_7]
+// renames of the STM [modUVC::ctrlUVC::stm_ref1] to [modUVC_ctrlUVC_stm_ref1]
+// renames of the event [modUVC::ctrlUVC::stm_ref1::tick::IN] to [IN_BUF__robotTick_19]
+// renames of the constant [modUVC::ctrlUVC::stm_ref1::p_transition_ratio] to [modUVC_ctrlUVC_stm_ref1_p_transition_ratio]
+// renames of the node [modUVC::ctrlUVC::stm_ref1::Paused] to [modUVC_ctrlUVC_stm_ref1_Paused]
+// renames of the node [modUVC::ctrlUVC::stm_ref1::MoveAlongRow] to [modUVC_ctrlUVC_stm_ref1_MoveAlongRow]
+// renames of the node [modUVC::ctrlUVC::stm_ref1::p0] to [modUVC_ctrlUVC_stm_ref1_p0]
+// renames of the node [modUVC::ctrlUVC::stm_ref1::p1] to [modUVC_ctrlUVC_stm_ref1_p1]
+// renames of the node [modUVC::ctrlUVC::stm_ref1::i0] to [modUVC_ctrlUVC_stm_ref1_i0]
+// renames of the node [modUVC::ctrlUVC::stm_ref1::TransitionBetweenRows] to [modUVC_ctrlUVC_stm_ref1_TransitionBetweenRows]
+// renames of the transition [modUVC::ctrlUVC::stm_ref1::t1] to [modUVC_ctrlUVC_stm_ref1_t1]
+// renames of the transition [modUVC::ctrlUVC::stm_ref1::t5] to [modUVC_ctrlUVC_stm_ref1_t5]
+// renames of the transition [modUVC::ctrlUVC::stm_ref1::t7] to [modUVC_ctrlUVC_stm_ref1_t7]
+// renames of the transition [modUVC::ctrlUVC::stm_ref1::t10] to [modUVC_ctrlUVC_stm_ref1_t10]
+// renames of the transition [modUVC::ctrlUVC::stm_ref1::t0] to [modUVC_ctrlUVC_stm_ref1_t0]
+// renames of the transition [modUVC::ctrlUVC::stm_ref1::t3] to [modUVC_ctrlUVC_stm_ref1_t3]
+// renames of the transition [modUVC::ctrlUVC::stm_ref1::t9] to [modUVC_ctrlUVC_stm_ref1_t9]
+// renames of the transition [modUVC::ctrlUVC::stm_ref1::t4] to [modUVC_ctrlUVC_stm_ref1_t4]
+// renames of the transition [modUVC::ctrlUVC::stm_ref1::t8] to [modUVC_ctrlUVC_stm_ref1_t8]
+// renames of the transition [modUVC::ctrlUVC::stm_ref1::t2] to [modUVC_ctrlUVC_stm_ref1_t2]
+// renames of the variable [modUVC::ctrlUVC::stm_ref1::exit_9] to [modUVC_ctrlUVC_stm_ref1_exit_9]
+// renames of the variable [modUVC::ctrlUVC::stm_ref1::scpc_8] to [modUVC_ctrlUVC_stm_ref1_scpc_8]
+// renames of the variable [modUVC::ctrlUVC::stm_ref1::lock_7] to [modUVC_ctrlUVC_stm_ref1_lock_7]
+// renames of the STM [modUVC::ctrlUVC::stm_ref2] to [modUVC_ctrlUVC_stm_ref2]
+// renames of the event [modUVC::ctrlUVC::stm_ref2::tick::IN] to [IN_BUF__humanTick_17]
+// renames of the constant [modUVC::ctrlUVC::stm_ref2::p_aware_of_risk] to [modUVC_ctrlUVC_stm_ref2_p_aware_of_risk]
+// renames of the constant [modUVC::ctrlUVC::stm_ref2::p_approach_red] to [modUVC_ctrlUVC_stm_ref2_p_approach_red]
+// renames of the constant [modUVC::ctrlUVC::stm_ref2::p_approach_robot] to [modUVC_ctrlUVC_stm_ref2_p_approach_robot]
+// renames of the constant [modUVC::ctrlUVC::stm_ref2::p_approach_yellow] to [modUVC_ctrlUVC_stm_ref2_p_approach_yellow]
+// renames of the node [modUVC::ctrlUVC::stm_ref2::OutOfRange] to [modUVC_ctrlUVC_stm_ref2_OutOfRange]
+// renames of the node [modUVC::ctrlUVC::stm_ref2::p0] to [modUVC_ctrlUVC_stm_ref2_p0]
+// renames of the node [modUVC::ctrlUVC::stm_ref2::InRedZone] to [modUVC_ctrlUVC_stm_ref2_InRedZone]
+// renames of the node [modUVC::ctrlUVC::stm_ref2::p1] to [modUVC_ctrlUVC_stm_ref2_p1]
+// renames of the node [modUVC::ctrlUVC::stm_ref2::InYellowZone] to [modUVC_ctrlUVC_stm_ref2_InYellowZone]
+// renames of the node [modUVC::ctrlUVC::stm_ref2::p3] to [modUVC_ctrlUVC_stm_ref2_p3]
+// renames of the node [modUVC::ctrlUVC::stm_ref2::InGreenZone] to [modUVC_ctrlUVC_stm_ref2_InGreenZone]
+// renames of the node [modUVC::ctrlUVC::stm_ref2::p2] to [modUVC_ctrlUVC_stm_ref2_p2]
+// renames of the node [modUVC::ctrlUVC::stm_ref2::i0] to [modUVC_ctrlUVC_stm_ref2_i0]
+// renames of the transition [modUVC::ctrlUVC::stm_ref2::t1] to [modUVC_ctrlUVC_stm_ref2_t1]
+// renames of the transition [modUVC::ctrlUVC::stm_ref2::t9] to [modUVC_ctrlUVC_stm_ref2_t9]
+// renames of the transition [modUVC::ctrlUVC::stm_ref2::t6] to [modUVC_ctrlUVC_stm_ref2_t6]
+// renames of the transition [modUVC::ctrlUVC::stm_ref2::t2] to [modUVC_ctrlUVC_stm_ref2_t2]
+// renames of the transition [modUVC::ctrlUVC::stm_ref2::t3] to [modUVC_ctrlUVC_stm_ref2_t3]
+// renames of the transition [modUVC::ctrlUVC::stm_ref2::t10] to [modUVC_ctrlUVC_stm_ref2_t10]
+// renames of the transition [modUVC::ctrlUVC::stm_ref2::t12] to [modUVC_ctrlUVC_stm_ref2_t12]
+// renames of the transition [modUVC::ctrlUVC::stm_ref2::t11] to [modUVC_ctrlUVC_stm_ref2_t11]
+// renames of the transition [modUVC::ctrlUVC::stm_ref2::t8] to [modUVC_ctrlUVC_stm_ref2_t8]
+// renames of the transition [modUVC::ctrlUVC::stm_ref2::t5] to [modUVC_ctrlUVC_stm_ref2_t5]
+// renames of the transition [modUVC::ctrlUVC::stm_ref2::t0] to [modUVC_ctrlUVC_stm_ref2_t0]
+// renames of the transition [modUVC::ctrlUVC::stm_ref2::t4] to [modUVC_ctrlUVC_stm_ref2_t4]
+// renames of the transition [modUVC::ctrlUVC::stm_ref2::t7] to [modUVC_ctrlUVC_stm_ref2_t7]
+// renames of the variable [modUVC::ctrlUVC::stm_ref2::exit_9] to [modUVC_ctrlUVC_stm_ref2_exit_9]
+// renames of the variable [modUVC::ctrlUVC::stm_ref2::scpc_8] to [modUVC_ctrlUVC_stm_ref2_scpc_8]
+// renames of the variable [modUVC::ctrlUVC::stm_ref2::lock_7] to [modUVC_ctrlUVC_stm_ref2_lock_7]
+// renames of the STM [modUVC::ctrlUVC::stm_ref3] to [modUVC_ctrlUVC_stm_ref3]
+// renames of the event [modUVC::ctrlUVC::stm_ref3::robotTick::OUT] to [OUT_BUF__robotTick_19]
+// renames of the event [modUVC::ctrlUVC::stm_ref3::humanTick::OUT] to [OUT_BUF__humanTick_17]
+// renames of the event [modUVC::ctrlUVC::stm_ref3::tick::IN] to [RP__tick_16]
+// renames of the event [modUVC::ctrlUVC::stm_ref3::odsTick::OUT] to [OUT_BUF__odsTick_18]
+// renames of the constant [modUVC::ctrlUVC::stm_ref3::N_ticks] to [modUVC_ctrlUVC_stm_ref3_N_ticks]
+// renames of the variable [modUVC::ctrlUVC::stm_ref3::ticks] to [modUVC_ctrlUVC_stm_ref3_ticks]
+// renames of the node [modUVC::ctrlUVC::stm_ref3::sp_pj_1] to [modUVC_ctrlUVC_stm_ref3_sp_pj_1]
+// renames of the node [modUVC::ctrlUVC::stm_ref3::i0] to [modUVC_ctrlUVC_stm_ref3_i0]
+// renames of the node [modUVC::ctrlUVC::stm_ref3::RelayEvent] to [modUVC_ctrlUVC_stm_ref3_RelayEvent]
+// renames of the transition [modUVC::ctrlUVC::stm_ref3::sp2_3] to [modUVC_ctrlUVC_stm_ref3_sp2_3]
+// renames of the transition [modUVC::ctrlUVC::stm_ref3::t0] to [modUVC_ctrlUVC_stm_ref3_t0]
+// renames of the transition [modUVC::ctrlUVC::stm_ref3::sp1_2] to [modUVC_ctrlUVC_stm_ref3_sp1_2]
+// renames of the variable [modUVC::ctrlUVC::stm_ref3::exit_9] to [modUVC_ctrlUVC_stm_ref3_exit_9]
+// renames of the variable [modUVC::ctrlUVC::stm_ref3::scpc_8] to [modUVC_ctrlUVC_stm_ref3_scpc_8]
+// renames of the variable [modUVC::ctrlUVC::stm_ref3::lock_7] to [modUVC_ctrlUVC_stm_ref3_lock_7]
+// renames of the event [modUVC::rpUVC::tick::OUT] to [RP__tick_16]
+// renames of the variable [modUVC::rpUVC::srobot] to [srobot]
+// renames of the variable [srobot] to [srobot]
+// renames of the variable [modUVC::rpUVC::shuman] to [shuman]
+// renames of the variable [shuman] to [shuman]
+// renames of the variable [modUVC::rpUVC::sods] to [sods]
+// renames of the variable [sods] to [sods]
+
+// Formulas defined in the assertion file but appended in the PRISM model
+			
+// Rewards defined in the assertion file but appended in the PRISM model
+

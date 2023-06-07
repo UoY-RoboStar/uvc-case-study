@@ -1,0 +1,10 @@
+import uvc_config::*
+	
+prob property P_dangerous:
+	Prob=? of [Finally modUVC::rpUVC::shuman==SHuman::inRed /\ 
+		modUVC::rpUVC::srobot==SRobot::transitionRow /\
+		modUVC::ctrlUVC::stm_ref3::ticks==t
+	]
+	using sim with CI at alpha=0.05, n=1000, and pathlen=10000000
+	with constants C20_goodOds_Aware
+	

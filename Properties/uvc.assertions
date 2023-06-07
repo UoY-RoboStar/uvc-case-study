@@ -1,0 +1,90 @@
+import uvc_config::*
+
+prob property P_deadlock_freedom:
+	not Exists [Finally deadlock]
+	with constant C1
+	
+prob property P_dangerous_C20_badOds_delibret:
+	Prob=? of [Finally modUVC::rpUVC::shuman==SHuman::inRed /\ 
+		modUVC::rpUVC::srobot==SRobot::transitionRow /\
+		modUVC::ctrlUVC::stm_ref3::ticks==t
+	]
+	with constants C20_badOds_delibret
+	
+prob property P_dangerous_C20_badOds_not_aware:
+	Prob=? of [Finally modUVC::rpUVC::shuman==SHuman::inRed /\ 
+		modUVC::rpUVC::srobot==SRobot::transitionRow /\
+		modUVC::ctrlUVC::stm_ref3::ticks==t
+	]
+	with constants C20_badOds_not_aware
+	
+prob property P_dangerous_C20_badOds_less_aware:
+	Prob=? of [Finally modUVC::rpUVC::shuman==SHuman::inRed /\ 
+		modUVC::rpUVC::srobot==SRobot::transitionRow /\
+		modUVC::ctrlUVC::stm_ref3::ticks==t
+	]
+	with constants C20_badOds_less_aware
+	
+prob property P_dangerous_C20_badOds_aware:
+	Prob=? of [Finally modUVC::rpUVC::shuman==SHuman::inRed /\ 
+		modUVC::rpUVC::srobot==SRobot::transitionRow /\
+		modUVC::ctrlUVC::stm_ref3::ticks==t
+	]
+	with constants C20_badOds_aware
+	
+prob property P_dangerous_C20_goodOds_delibrate:
+	Prob=? of [Finally modUVC::rpUVC::shuman==SHuman::inRed /\ 
+		modUVC::rpUVC::srobot==SRobot::transitionRow /\
+		modUVC::ctrlUVC::stm_ref3::ticks==t
+	]
+	with constants C20_goodOds_delibrate
+	
+prob property P_dangerous_C20_goodOds_not_aware:
+	Prob=? of [Finally modUVC::rpUVC::shuman==SHuman::inRed /\ 
+		modUVC::rpUVC::srobot==SRobot::transitionRow /\
+		modUVC::ctrlUVC::stm_ref3::ticks==t
+	]
+	with constants C20_goodOds_not_aware
+	
+prob property P_dangerous_C20_goodOds_lessAware:
+	Prob=? of [Finally modUVC::rpUVC::shuman==SHuman::inRed /\ 
+		modUVC::rpUVC::srobot==SRobot::transitionRow /\
+		modUVC::ctrlUVC::stm_ref3::ticks==t
+	]
+	with constants C20_goodOds_lessAware
+	
+prob property P_dangerous_C20_goodOds_Aware:
+	Prob=? of [Finally modUVC::rpUVC::shuman==SHuman::inRed /\ 
+		modUVC::rpUVC::srobot==SRobot::transitionRow /\
+		modUVC::ctrlUVC::stm_ref3::ticks==t
+	]
+	with constants C20_goodOds_Aware
+	
+prob property P_dangerous_C20_noOds_delibrate:
+	Prob=? of [Finally modUVC::rpUVC::shuman==SHuman::inRed /\ 
+		modUVC::rpUVC::srobot==SRobot::transitionRow /\
+		modUVC::ctrlUVC::stm_ref3::ticks==t
+	]
+	with constants C20_noOds_delibrate
+	
+prob property P_dangerous_C20_noOds_not_aware:
+	Prob=? of [Finally modUVC::rpUVC::shuman==SHuman::inRed /\ 
+		modUVC::rpUVC::srobot==SRobot::transitionRow /\
+		modUVC::ctrlUVC::stm_ref3::ticks==t
+	]
+	with constants C20_noOds_not_aware
+	
+prob property P_dangerous_C20_noOds_less_aware:
+	Prob=? of [Finally modUVC::rpUVC::shuman==SHuman::inRed /\ 
+		modUVC::rpUVC::srobot==SRobot::transitionRow /\
+		modUVC::ctrlUVC::stm_ref3::ticks==t
+	]
+	with constants C20_noOds_less_aware
+
+prob property P_dangerous_C20_noOds_aware:
+	Prob=? of [Finally modUVC::rpUVC::shuman==SHuman::inRed /\ 
+		modUVC::rpUVC::srobot==SRobot::transitionRow /\
+		modUVC::ctrlUVC::stm_ref3::ticks==t
+	]
+	with constants C20_noOds_aware
+	

@@ -1,0 +1,91 @@
+stm HumanSTM {
+	requires stateInf initial i0
+
+	const p_approach_robot : real
+	const p_aware_of_risk : real
+	const p_approach_red : real
+	
+	state OutOfRange {
+		entry shuman = SHuman :: outOfRange
+	}
+	state InGreenZone {
+		entry shuman = SHuman :: inGreen
+	}
+	state InYellowZone {
+		entry shuman = SHuman :: inYellow
+	}
+	state InRedZone {
+		entry shuman = SHuman :: inRed
+	}
+	transition t0 {
+		from i0
+		to OutOfRange
+	}
+const p_approach_yellow : real
+	event tick
+	probabilistic p0
+	probabilistic p1
+	probabilistic p2
+	probabilistic p3
+	transition t1 {
+		from OutOfRange
+		to p0
+		trigger tick
+	}
+	transition t2 {
+		from p0
+		to InGreenZone
+		probability p_approach_robot
+	}
+	transition t3 {
+		from p0
+		to OutOfRange
+		probability 1 - p_approach_robot
+	}
+	transition t4 {
+		from InGreenZone
+		to p1
+		trigger tick
+	}
+	transition t5 {
+		from p1
+		to InYellowZone
+		probability p_approach_yellow
+	}
+	transition t6 {
+		from p1
+		to OutOfRange
+		probability 1 - p_approach_yellow
+	}
+	transition t7 {
+		from InYellowZone
+		to p2
+		trigger tick
+	}
+	transition t8 {
+		from p2
+		to InRedZone
+		probability p_approach_red
+	}
+	transition t9 {
+		from p2
+		to InGreenZone
+		probability 1 - p_approach_red
+	}
+	transition t10 {
+		from InRedZone
+		to p3
+		trigger tick
+	}
+	transition t11 {
+		from p3
+		to OutOfRange
+		probability p_aware_of_risk
+	}
+	transition t12 {
+		from p3
+		to InRedZone
+		probability 1 - p_aware_of_risk
+	}
+}
+

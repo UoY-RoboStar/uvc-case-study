@@ -1,0 +1,26 @@
+stm EventRelaySTM {
+	event tick
+	event humanTick
+	event robotTick
+	event odsTick
+	initial i0
+	state RelayEvent {
+	}
+	transition t0 {
+		from i0
+		to RelayEvent
+	}
+	transition t1 {
+		from RelayEvent
+		to RelayEvent
+		trigger 
+		
+		tick
+		action 
+	
+	humanTick ; odsTick ; robotTick ; ticks = ( if ticks < N_ticks then ticks + 1 else ticks end )
+	}
+	var ticks : int = 0
+	const N_ticks : int
+}
+

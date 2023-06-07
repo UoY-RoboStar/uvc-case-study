@@ -1,0 +1,29 @@
+interface stateInf {
+	var shuman : SHuman
+	var sods : SODS
+	var srobot : SRobot
+}
+
+enumeration SHuman { outOfRange inGreen inYellow inRed } enumeration SODS { noHumanDetected humanDetectedInGreen humanDetectedInYellow } enumeration SRobot { alongRow transitionRow paused } module modUVC {
+	robotic platform rpUVC {
+		provides stateInf uses eventInf }
+
+	controller ctrlUVC {
+		requires stateInf uses eventInf sref stm_ref0 = ODSSTM
+		sref stm_ref1 = RobotSTM
+		sref stm_ref2 = HumanSTM
+		sref stm_ref3 = EventRelaySTM
+		connection ctrlUVC on tick to stm_ref3 on tick
+		connection stm_ref3 on odsTick to stm_ref0 on tick ( _async )
+		connection stm_ref3 on robotTick to stm_ref1 on tick ( _async )
+		connection stm_ref3 on humanTick to stm_ref2 on tick
+	( _async )
+	}
+
+	connection rpUVC on tick to ctrlUVC on tick ( _async )
+}
+
+interface eventInf {
+	event tick
+}
+

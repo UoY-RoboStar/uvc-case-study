@@ -1,0 +1,102 @@
+stm ODSSTM {
+	requires stateInf 
+	
+	const p_ods_green : real
+	const p_ods_yellow : real
+	initial i0
+	state NoHumanDetected {
+		entry sods = SODS :: noHumanDetected
+	}
+	state HumanDetectedInYellow {
+		entry sods = SODS :: humanDetectedInYellow
+	}
+	state HumanDetectedInGreen {
+		entry sods = SODS :: humanDetectedInGreen
+	}
+event tick
+	probabilistic p0
+	probabilistic p1
+	probabilistic p2
+	probabilistic p3
+	transition t0 {
+		from i0
+		to NoHumanDetected
+	}
+	transition t1 {
+		from NoHumanDetected
+		to p0
+		trigger tick
+		condition shuman == SHuman :: inGreen
+	}
+	transition t2 {
+		from p0
+		to HumanDetectedInGreen
+		probability p_ods_green
+	}
+	transition t3 {
+		from p0
+		to NoHumanDetected
+		probability 1 - p_ods_green
+	}
+	transition t4 {
+		from NoHumanDetected
+		to p1
+		trigger tick
+		condition shuman == SHuman :: inYellow
+	}
+	transition t5 {
+		from p1
+		to HumanDetectedInYellow
+		probability p_ods_yellow
+	}
+	transition t6 {
+		from p1
+		to NoHumanDetected
+		probability 1 - p_ods_yellow
+	}
+	transition t7 {
+		from HumanDetectedInGreen
+		to p2
+		trigger tick
+		condition shuman == SHuman :: inYellow
+	}
+	transition t8 {
+		from p2
+		to HumanDetectedInYellow
+		probability p_ods_yellow
+	}
+	transition t9 {
+		from p2
+		to HumanDetectedInGreen
+		probability 1 - p_ods_yellow
+	}
+	transition t10 {
+		from HumanDetectedInGreen
+		to NoHumanDetected
+		trigger tick
+		condition shuman == SHuman :: outOfRange
+	}
+	transition t11 {
+		from HumanDetectedInYellow
+		to NoHumanDetected
+		trigger tick
+		condition shuman == SHuman :: outOfRange
+	}
+	transition t12 {
+		from HumanDetectedInYellow
+		to p3
+		trigger tick
+		condition shuman == SHuman :: inGreen
+	}
+	transition t13 {
+		from p3
+		to HumanDetectedInGreen
+		probability p_ods_green
+	}
+	transition t14 {
+		from p3
+		to HumanDetectedInYellow
+		probability 1 - p_ods_green
+	}
+}
+

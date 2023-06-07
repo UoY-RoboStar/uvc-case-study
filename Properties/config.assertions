@@ -1,0 +1,151 @@
+package uvc_config
+
+constants C1:
+	modUVC::ctrlUVC::stm_ref0::p_ods_green set to 0.4,
+	modUVC::ctrlUVC::stm_ref0::p_ods_yellow set to 0.7,
+	modUVC::ctrlUVC::stm_ref1::p_transition_ratio set to 0.1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_robot set to 1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_yellow set to 1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_red set to 1, 
+	modUVC::ctrlUVC::stm_ref2::p_aware_of_risk set to 0.01, 
+	modUVC::ctrlUVC::stm_ref3::N_ticks set to 20
+	
+	
+const t : core::int
+
+
+
+constants C20_badOds_delibret:
+	modUVC::ctrlUVC::stm_ref0::p_ods_green set to 0.4,
+	modUVC::ctrlUVC::stm_ref0::p_ods_yellow set to 0.7,
+	modUVC::ctrlUVC::stm_ref1::p_transition_ratio set to 0.1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_robot set to 1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_yellow set to 1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_red set to 1, 
+	modUVC::ctrlUVC::stm_ref2::p_aware_of_risk set to 0.01, 
+	modUVC::ctrlUVC::stm_ref3::N_ticks set to 20, and
+	t from set {1 to 19 by step 1}
+	
+	
+	
+constants C20_badOds_not_aware:
+	modUVC::ctrlUVC::stm_ref0::p_ods_yellow set to 0.7,
+	modUVC::ctrlUVC::stm_ref0::p_ods_green set to 0.4,
+	modUVC::ctrlUVC::stm_ref1::p_transition_ratio set to 0.1,
+		modUVC::ctrlUVC::stm_ref2::p_approach_robot set to 0.9,
+	modUVC::ctrlUVC::stm_ref2::p_approach_yellow set to 0.9,
+	modUVC::ctrlUVC::stm_ref2::p_approach_red set to 0.7, 
+	modUVC::ctrlUVC::stm_ref2::p_aware_of_risk set to 0.01, 
+	modUVC::ctrlUVC::stm_ref3::N_ticks set to 20, and
+	t from set {1 to 19 by step 1}
+
+constants C20_badOds_less_aware:
+	modUVC::ctrlUVC::stm_ref0::p_ods_yellow set to 0.7,
+	modUVC::ctrlUVC::stm_ref0::p_ods_green set to 0.4,
+	modUVC::ctrlUVC::stm_ref1::p_transition_ratio set to 0.1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_robot set to 0.7,
+	modUVC::ctrlUVC::stm_ref2::p_approach_yellow set to 0.7,
+	modUVC::ctrlUVC::stm_ref2::p_approach_red set to 0.5, 
+	modUVC::ctrlUVC::stm_ref2::p_aware_of_risk set to 0.01, 
+	modUVC::ctrlUVC::stm_ref3::N_ticks set to 20, and
+	t from set {1 to 19 by step 1}
+
+constants C20_badOds_aware:
+	modUVC::ctrlUVC::stm_ref0::p_ods_yellow set to 0.7,
+	modUVC::ctrlUVC::stm_ref0:: p_ods_green set to 0.4,
+	modUVC::ctrlUVC::stm_ref1::p_transition_ratio set to 0.1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_robot set to 0.5,
+	modUVC::ctrlUVC::stm_ref2::p_approach_yellow set to 0.5,
+	modUVC::ctrlUVC::stm_ref2::p_approach_red set to 0.3, 
+	modUVC::ctrlUVC::stm_ref2::p_aware_of_risk set to 0.01, 
+	modUVC::ctrlUVC::stm_ref3::N_ticks set to 20, and
+	t from set {1 to 19 by step 1}
+
+constants C20_goodOds_delibrate:
+	modUVC::ctrlUVC::stm_ref0::p_ods_yellow set to 0.99,
+	modUVC::ctrlUVC::stm_ref0::p_ods_green set to 0.99,
+	modUVC::ctrlUVC::stm_ref1::p_transition_ratio set to 0.1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_robot set to 1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_yellow set to 1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_red set to 1, 
+	modUVC::ctrlUVC::stm_ref2::p_aware_of_risk set to 0.01, 
+	modUVC::ctrlUVC::stm_ref3::N_ticks set to 20, and
+	t from set {1 to 19 by step 1}
+			
+constants C20_goodOds_not_aware:
+	modUVC::ctrlUVC::stm_ref0::p_ods_yellow set to 0.95,
+	modUVC::ctrlUVC::stm_ref0::p_ods_green set to 0.65,
+	modUVC::ctrlUVC::stm_ref1::p_transition_ratio set to 0.1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_robot set to 0.9,
+	modUVC::ctrlUVC::stm_ref2::p_approach_yellow set to 0.9,
+	modUVC::ctrlUVC::stm_ref2::p_approach_red set to 0.7, 
+	modUVC::ctrlUVC::stm_ref2::p_aware_of_risk set to 0.01, 
+	modUVC::ctrlUVC::stm_ref3::N_ticks set to 20, and
+	t from set {1 to 19 by step 1}
+							
+constants C20_goodOds_lessAware:
+	modUVC::ctrlUVC::stm_ref0::p_ods_yellow set to 0.99,
+	modUVC::ctrlUVC::stm_ref0::p_ods_green set to 0.99,
+	modUVC::ctrlUVC::stm_ref1::p_transition_ratio set to 0.1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_robot set to 0.7,
+	modUVC::ctrlUVC::stm_ref2::p_approach_yellow set to 0.7,
+	modUVC::ctrlUVC::stm_ref2::p_approach_red set to 0.5, 
+	modUVC::ctrlUVC::stm_ref2::p_aware_of_risk set to 0.01, 
+	modUVC::ctrlUVC::stm_ref3::N_ticks set to 20, and
+	t from set {1 to 19 by step 1}
+	
+constants C20_goodOds_Aware:
+	modUVC::ctrlUVC::stm_ref0::p_ods_yellow set to 0.99,
+	modUVC::ctrlUVC::stm_ref0::p_ods_green set to 0.99,
+	modUVC::ctrlUVC::stm_ref1::p_transition_ratio set to 0.1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_robot set to 0.5,
+	modUVC::ctrlUVC::stm_ref2::p_approach_yellow set to 0.5,
+	modUVC::ctrlUVC::stm_ref2::p_approach_red set to 0.3, 
+	modUVC::ctrlUVC::stm_ref2::p_aware_of_risk set to 0.01, 
+	modUVC::ctrlUVC::stm_ref3::N_ticks set to 20, and
+	t from set {1 to 19 by step 1}
+
+constants C20_noOds_delibrate:
+	modUVC::ctrlUVC::stm_ref0::p_ods_yellow set to 0,
+	modUVC::ctrlUVC::stm_ref0::p_ods_green set to 0,
+	modUVC::ctrlUVC::stm_ref1::p_transition_ratio set to 0.1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_robot set to 1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_yellow set to 1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_red set to 1, 
+	modUVC::ctrlUVC::stm_ref2::p_aware_of_risk set to 0.01, 
+	modUVC::ctrlUVC::stm_ref3::N_ticks set to 20, and
+	t from set {1 to 19 by step 1}
+	
+constants C20_noOds_not_aware:
+	modUVC::ctrlUVC::stm_ref0::p_ods_yellow set to 0,
+	modUVC::ctrlUVC::stm_ref0::p_ods_green set to 0,
+	modUVC::ctrlUVC::stm_ref1::p_transition_ratio set to 0.1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_robot set to 0.9,
+	modUVC::ctrlUVC::stm_ref2::p_approach_yellow set to 0.9,
+	modUVC::ctrlUVC::stm_ref2::p_approach_red set to 0.7, 
+	modUVC::ctrlUVC::stm_ref2::p_aware_of_risk set to 0.01, 
+	modUVC::ctrlUVC::stm_ref3::N_ticks set to 20, and
+	t from set {1 to 19 by step 1}
+	
+constants C20_noOds_less_aware:
+	modUVC::ctrlUVC::stm_ref0::p_ods_yellow set to 0,
+	modUVC::ctrlUVC::stm_ref0::p_ods_green set to 0,
+	modUVC::ctrlUVC::stm_ref1::p_transition_ratio set to 0.1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_robot set to 0.7,
+	modUVC::ctrlUVC::stm_ref2::p_approach_yellow set to 0.7,
+	modUVC::ctrlUVC::stm_ref2::p_approach_red set to 0.5, 
+	modUVC::ctrlUVC::stm_ref2::p_aware_of_risk set to 0.01, 
+	modUVC::ctrlUVC::stm_ref3::N_ticks set to 20, and
+	t from set {1 to 19 by step 1}
+
+constants C20_noOds_aware:
+	modUVC::ctrlUVC::stm_ref0::p_ods_yellow set to 0,
+	modUVC::ctrlUVC::stm_ref0::p_ods_green set to 0,
+	modUVC::ctrlUVC::stm_ref1::p_transition_ratio set to 0.1,
+	modUVC::ctrlUVC::stm_ref2::p_approach_robot set to 0.5,
+	modUVC::ctrlUVC::stm_ref2::p_approach_yellow set to 0.5,
+	modUVC::ctrlUVC::stm_ref2::p_approach_red set to 0.3, 
+	modUVC::ctrlUVC::stm_ref2::p_aware_of_risk set to 0.01, 
+	modUVC::ctrlUVC::stm_ref3::N_ticks set to 20, and
+	t from set {1 to 19 by step 1}
+	
