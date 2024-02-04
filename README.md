@@ -8,6 +8,6 @@ The model is also analysed in RoboTool by automatically
 3. launching many PRISM model checker instances to verify properties, and 
 4. collecting results (from log files such as [this one](prism-gen/20230314214811/P_dangerous_C20_noOds_aware_t-4_modUVC_ctrlUVC_stm_213.log)) and generating a [report](prism-gen/20230314214811/uvc_assertions.html).
 
-Please refer to this paper "[Probabilistic modelling and verification using RoboChart and PRISM](http://dx.doi.org/10.1007/s10270-021-00916-8)" for more information about the probabilistic modelling and verification for RoboChart.
+Please refer to this paper "[Probabilistic Modelling and Safety Assurance of an Agriculture Robot Providing Light-Treatment](https://doi.org/10.1109/CASE56687.2023.10260395)" for the details of this case study, and "[Probabilistic modelling and verification using RoboChart and PRISM](http://dx.doi.org/10.1007/s10270-021-00916-8)" for more information about the probabilistic modelling and verification for RoboChart.
 
 The information about how to install RoboTool, open this model, and verify it in RoboTool can be found in the [RoboTool manual](https://robostar.cs.york.ac.uk/publications/techreports/reports/robotool-manual.pdf). In particular, the plugins in the categories PRISM, RoboChart, RoboChart Generator, and Epsilon should be installed, and the chapter "Model Checking with PRISM" should be referred to.
